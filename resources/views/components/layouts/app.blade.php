@@ -9,7 +9,8 @@
 
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
+    
+        <script src="{{ asset('plugins/fontawesome-free/js/all.min.js') }}"></script>
 
     @stack('styles')
 
