@@ -1,9 +1,5 @@
 <?php
 
-use App\Livewire\Dashboard;
-use App\Livewire\Home;
-use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,5 +11,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', Dashboard::class)->name('dashboard');
-Route::get('/home', Home::class)->name('home');
+require __DIR__.'/admin.php';
+require __DIR__.'/user.php';

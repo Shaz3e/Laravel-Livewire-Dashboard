@@ -37,7 +37,7 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
                         <li class="nav-item">
-                            <a wire:navigate href="{{ route('dashboard') }}" class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                            <a wire:navigate href="{{ route('admin.dashboard') }}" class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
                                     Dashboard
@@ -47,7 +47,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a wire:navigate href="{{ route('home') }}" class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}">
+                            <a wire:navigate href="{{ route('admin.users') }}" class="nav-link {{ request()->routeIs('admin.users') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
                                     Home
