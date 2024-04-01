@@ -72,6 +72,28 @@ class UserList extends Component
     }
 
     /**
+     * Toggle User Status
+     */
+    public function toggleUserStatus($userId)
+    {
+        // Get user data
+        $user = User::find($userId);
+        
+        // Check user exists
+        if (!$user) {
+            $this->dispatch('error', 'User not found!');
+            return;
+        }
+
+        // Change Status
+        $user->update(['is_active' => !$user->is_active]);
+
+        // Dispatch a success message
+        $this->dispatch('success', 'User status has been updated successfully!');
+
+    }
+
+    /**
      * Create Modal and Reset form and validations
      */
     public function create()

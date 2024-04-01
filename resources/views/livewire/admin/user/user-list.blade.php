@@ -56,6 +56,7 @@
                             <th>#</th>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>Status</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -66,6 +67,13 @@
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>
+                                    <div class="icheck-success d-inline">
+                                        <input type="checkbox" wire:change="toggleUserStatus({{ $user->id }})"
+                                            id="is_active_{{ $user->id }}" {{ $user->is_active ? 'checked' : '' }}>
+                                        <label for="is_active_{{ $user->id }}"></label>
+                                    </div>
+                                </td>
+                                <td class="text-right">
                                     <button wire:click="edit({{ $user->id }})" class="btn btn-sm btn-flat btn-info"
                                         data-toggle="modal" data-target="#updateModal">
                                         Edit
@@ -99,6 +107,7 @@
 <!-- /.content-wrapper -->
 
 @push('styles')
+    <link rel="stylesheet" href="{{ asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
 @endpush
 
 @push('scripts')
