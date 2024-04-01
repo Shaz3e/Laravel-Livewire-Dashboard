@@ -141,12 +141,12 @@
                 </li>
             </ul>
             <div class="dropdown d-inline-block user-dropdown">
-                <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
+                <button type="button" class="btn" id="page-header-user-dropdown"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img class="img-circle img-bordered-sm" src="{{ asset('dist/img/user2-160x160.jpg') }}"
                         alt="{{ auth()->guard('admin')->user()->name }}" width="35px">
                     <span class="d-none d-xl-inline-block ms-1">{{ auth()->guard('admin')->user()->name }}</span>
-                    <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+                    <i class="fa-solid fa-chevron-down"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
