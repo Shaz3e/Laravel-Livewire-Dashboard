@@ -9,8 +9,8 @@
 
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    
-        <script src="{{ asset('plugins/fontawesome-free/js/all.min.js') }}"></script>
+
+    <script src="{{ asset('plugins/fontawesome-free/js/all.min.js') }}"></script>
 
     @stack('styles')
 
@@ -25,9 +25,13 @@
     <!-- Site wrapper -->
     <div class="wrapper">
 
-        <x-header />
-
-        <x-sidebar />
+        @if (auth()->guard('admin')->user())
+            <x-header />
+            <x-sidebar />
+        @else
+            <x-user-header />
+            <x-user-sidebar />
+        @endif
 
         {{ $slot }}
 
