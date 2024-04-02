@@ -29,19 +29,14 @@
                 </select>
             </div>
             <div class="col-md-9 col-sm-12">
-                <form class="app-search">
-                    <div class="position-relative">
                         <input type="search" wire:model.live="search" class="form-control form-control-sm"
-                            placeholder="Search Users">
-                        <span class="ri-search-line"></span>
-                    </div>
-                </form>
+                            placeholder="Search...">
             </div>
             <div class="col-md-2 col-sm-12">
                 <div class="d-grid">
                     <button wire:click="create" type="button" class="btn btn-success btn-sm btn-flat btn-block"
                         data-toggle="modal" data-target="#createModal">
-                        Create
+                        <i class="ri-add-line"></i> Create
                     </button>
                 </div>
             </div>
