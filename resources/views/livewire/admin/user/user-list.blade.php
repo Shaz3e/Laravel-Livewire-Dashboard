@@ -8,7 +8,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Users</a></li>
+                        <li class="breadcrumb-item"><a wire:navigate href="{{ route('admin.dashboard') }}">Dashboard</a></li>
                         <li class="breadcrumb-item active">View All Users</li>
                     </ol>
                 </div>
@@ -34,10 +34,9 @@
             </div>
             <div class="col-md-2 col-sm-12">
                 <div class="d-grid">
-                    <button wire:click="create" type="button" class="btn btn-success btn-sm btn-flat btn-block"
-                        data-toggle="modal" data-target="#createModal">
+                    <a wire:navigate href="{{ route('admin.user.create') }}" class="btn btn-success btn-sm btn-flat btn-block">
                         <i class="ri-add-line"></i> Create
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -69,10 +68,12 @@
                                     </div>
                                 </td>
                                 <td class="text-right">
-                                    <button wire:click="edit({{ $user->id }})" class="btn btn-sm btn-flat btn-info"
-                                        data-toggle="modal" data-target="#updateModal">
+                                    <a wire:navigate href="{{ route('admin.user.show', $user->id) }}" class="btn btn-sm btn-flat btn-info">
+                                        Show
+                                    </a>
+                                    <a wire:navigate href="{{ route('admin.user.edit', $user->id) }}" class="btn btn-sm btn-flat btn-info">
                                         Edit
-                                    </button>
+                                    </a>
                                     <button wire:click="confirmDelete({{ $user->id }})"
                                         class="btn btn-sm btn-flat btn-danger" data-toggle="modal"
                                         data-target="#deleteModal">
@@ -94,9 +95,6 @@
 
     </section>
     <!-- /.content -->
-
-    @include('livewire.admin.user.create')
-    @include('livewire.admin.user.edit')
     @include('livewire.admin.user.delete')
 </div>
 <!-- /.content-wrapper -->

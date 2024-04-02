@@ -55,19 +55,6 @@
     <script>
         // Livewire Events
         document.addEventListener('livewire:init', () => {
-            // close modal when user created
-            Livewire.on('created', (event) => {
-                $('#createModal').modal('hide');
-            });
-            // close modal when user updated
-            Livewire.on('updated', (event) => {
-                $('#updateModal').modal('hide');
-            });
-            // close mdal when user not found
-            Livewire.on('not-found', (event) => {
-                $('#createModal').modal('hide');
-                $('#updateModal').modal('hide');
-            });
             // close modal when user is delete
             Livewire.on('deleted', (event) => {
                 $('#deleteModal').modal('hide');

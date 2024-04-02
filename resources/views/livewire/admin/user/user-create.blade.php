@@ -1,14 +1,28 @@
-<div wire:ignore.self id="createModal" class="modal fade">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <form wire:submit="save">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="createModalLabel">Create new user</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Create New User</h1>
                 </div>
-                <div class="modal-body">
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a wire:navigate href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a wire:navigate href="{{ route('admin.users') }}">Users</a></li>
+                        <li class="breadcrumb-item active">Create</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <!-- Default box -->
+        <form wire:submit="save">
+            <div class="card">
+                <div class="card-body">
                     <div class="row">
                         <div class="col-md-4">
                             <label for="name">Full Name</label>
@@ -37,11 +51,21 @@
                     </div>
                     {{-- /.row --}}
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-success">Save changes</button>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-success">Create</button>
                 </div>
-            </form>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+                <!-- /.card-footer-->
+            </div>
+            <!-- /.card -->
+        </form>
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+@push('styles')
+@endpush
+
+@push('scripts')
+@endpush

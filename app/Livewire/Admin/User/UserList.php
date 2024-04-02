@@ -4,10 +4,12 @@ namespace App\Livewire\Admin\User;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Schema;
+use Livewire\Attributes\Title;
 use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithPagination;
 
+#[Title('Users List')]
 class UserList extends Component
 {
     use WithPagination;
@@ -17,7 +19,7 @@ class UserList extends Component
 
     public $perPage = 10;
 
-    public $id, $name, $email, $password;
+    public $id;
 
     // record to delete
     public $recordToDelete;
@@ -94,90 +96,6 @@ class UserList extends Component
     }
 
     /**
-     * Create Modal and Reset form and validations
-     */
-    public function create()
-    {
-        $this->resetValidation();
-        $this->reset();
-    }
-
-    /**
-     * Save Record
-     */
-    public function save()
-    {
-        // Validate data
-        $validated = $this->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:' . User::class,
-            'password' => 'required|min:8|max:255',
-        ]);
-
-        User::create($validated);
-
-        // Reset Form
-        $this->reset();
-
-        // Dispatch a success message
-        $this->dispatch('success', 'User has been created successfully!');
-
-        // Dipatch browser event
-        $this->dispatch('created');
-    }
-
-    /**
-     * Edi Model
-     */
-    public function edit($id)
-    {
-        $this->id = $id;
-        $user = User::find($id);
-        if (!$user) {
-            session()->flash('error', 'User not found!');
-            // Dispatch browser event to close modal
-            $this->dispatch('not-found');
-        } else {
-            $this->id = $user->id;
-            $this->name = $user->name;
-            $this->email = $user->email;
-            $this->password = '';
-        }
-    }
-
-    /**
-     * Update Record
-     */
-    public function update()
-    {
-        // Validate data
-        $validated = $this->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:' . User::class . ',email,' . $this->id,
-            'password' => 'nullable|min:8|max:255',
-        ]);
-
-        // If password is not provided, remove it from the validated data
-        $emptyValidated = empty($validated['password']);
-        if ($emptyValidated) {
-            unset($validated['password']);
-        }
-
-        // Save the user
-        $user = User::find($this->id);
-        $user->update($validated);
-
-        // Reset Form
-        $this->reset();
-
-        // Dispatch a success message
-        $this->dispatch('success', 'User has been updated successfully!');
-
-        // Dispatch browser event to close modal
-        $this->dispatch('updated');
-    }
-
-    /**
      * Confirm Delete
      */
     public function confirmDelete($id)
@@ -201,7 +119,7 @@ class UserList extends Component
     {
         // Check if a record to delete is set
         if (!$this->recordToDelete) {
-            session()->flash('error', 'No user selected for deletion.');
+            $this->dispatch('error', 'No user selected for deletion.');
             return;
         }
 
@@ -210,7 +128,6 @@ class UserList extends Component
 
         // Check record exists
         if (!$user) {
-            session()->flash('error', 'User not found!');
             $this->dispatch('hideDeleteConfirmation');
             return;
         }
