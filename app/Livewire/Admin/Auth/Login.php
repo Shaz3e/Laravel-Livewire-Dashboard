@@ -51,7 +51,7 @@ class Login extends Component
         if (Auth::guard('admin')->attempt($credentials)) {
             // Show success message
             session()->flash('success', 'Welcome Back!');
-            return redirect()->intended('admin.dashboard');
+            return redirect()->route('admin.dashboard');
         } else {
             session()->flash('error', 'Invalid Credentials');
         }
